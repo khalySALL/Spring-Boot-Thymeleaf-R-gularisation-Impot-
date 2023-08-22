@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="htttp://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="home.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout Declarant</title>
+
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="row mt-3">
+            <div class="col-md-6 offset-3">
+                <div class="card">
+                    <div class="card-header">Nouveau declarant</div>
+                    <div class="card-body">
+
+                        <div class="p-3">
+                            <form th:action="@{/saveDeclarant}" method="post">
+                                <div class="mb-2">
+                                    <label class="form-label">Raison sociale</label>
+                                    <input type="text" name="raisonSociale" class="form-control" th:value="${declarant.raisonSociale}">
+                                    <span class="text-danger" th:errors="${declarant.raisonSociale}"></span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">Adresse</label>
+                                    <input type="text" name="adresse" class="form-control" th:value="${declarant.adresse}">
+                                    <span class="text-danger" th:errors="${declarant.adresse}"></span>
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email" class="form-control" th:value="${declarant.email}">
+
+                                </div>
+
+                                <div class="mb-2">
+                                    <label class="form-label">Telephone</label>
+                                    <input type="text" name="telephone" class="form-control" th:value="${declarant.telephone}">
+                                    <span class="text-danger" th:errors="${declarant.telephone}"></span>
+                                </div>
+
+                                <button class="btn btn-success">Save</button>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>

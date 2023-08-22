@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="htttp://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="home.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Ajout un Paiement</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="row mt-3">
+    <div class="col-md-6 offset-3">
+      <div class="card">
+        <div class="card-header">Nouveau Paiement</div>
+        <div class="card-body">
+
+        <div class="p-3">
+
+    <form th:action="@{/paiements/save}" th:object="${paiement}" method="post"
+      style="max-width: 600px; margin: 0 auto;">
+
+
+
+      <div class="mb-2">
+        <label class="form-label">Date de paiement</label>
+        <input type="date" name="datePaiement" class="form-control" th:value="${paiement.datePaiement}">
+
+      </div>
+
+
+        <div class="mb-2">
+          <label class="form-label">Montant</label>
+          <input type="number" name="montantPaiement" class="form-control" th:value="${paiement.montantPaiement}">
+
+        </div>
+
+        <div class="mb-2">
+          <label class="col-form-label col-sm-4">Declaration:</label>
+          <div class="col-sm-8">
+            <select th:field="*{declaration}" class="form-control" required>
+              <th:block th:each="d : ${listDeclarations}">
+                <option th:text="${d.montantDeclaration}" th:value="${d.id}" />
+              </th:block>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-center p-3">
+          <button type="submit" class="btn btn-success">PAY</button>
+        </div>
+
+    </form>
+
+
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
